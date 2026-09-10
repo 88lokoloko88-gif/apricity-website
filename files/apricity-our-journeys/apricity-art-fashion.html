@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apricity — Art &amp; Fashion (event catalogue)</title>
+
+<!--
+  ============================================================
+  LEVEL 2 — EVENT CATALOGUE FOR ART & FASHION
+  ============================================================
+  Chain: Our Journeys > Art & Fashion (this page) > event.
+
+  The catalogue grid is 2 columns. Deliberate choice:
+  events get a large image, a single event does not look
+  orphaned in an empty row, and 2, 4 or 6 events fill rows evenly.
+
+  The whole event card is clickable, as with the direction cards.
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --apj-ink:       #777681;
+    --apj-blue:      #00289B;   /* Apricity brand blue — taken from the PDF offers */
+    --apj-surface:   #F9F9F9;
+    --apj-hairline:  rgba(119,118,129,.18);
+    --apj-container: 1300px;
+    --apj-row:       1270px;
+    --apj-gutter:    15px;
+    --apj-ease:      0.7s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .apj *{box-sizing:border-box;margin:0;padding:0;}
+
+  .apj{
+    font-family:'Poppins',Arial,sans-serif;
+    font-weight:400;font-size:16px;line-height:30px;
+    color:var(--apj-ink);background:#fff;
+    padding:150px 0 100px;
+  }
+  .apj-container{max-width:var(--apj-container);margin:0 auto;padding:0 var(--apj-gutter);}
+  .apj-row{max-width:var(--apj-row);margin:0 auto;}
+
+  /* ---------- back link ---------- */
+  .apj-back{
+    display:inline-block;font-weight:500;text-decoration:none;
+    color:var(--apj-ink);margin-bottom:40px;transition:var(--apj-ease);
+  }
+  .apj-back:hover{opacity:.6;}
+
+  /* ---------- direction header ---------- */
+  .apj-head{max-width:840px;margin-bottom:80px;}
+  .apj-back,.apj-head,.apj-eyebrow{color:#20242c;}
+  .apj-head h2{font-weight:500;font-size:54px;line-height:68px;letter-spacing:.8px;margin-bottom:20px;}
+  .apj-head p{max-width:640px;}
+
+  /* ---------- catalogue eyebrow ---------- */
+  .apj-eyebrow{
+    font-weight:500;font-size:14px;line-height:22px;letter-spacing:1.6px;
+    text-transform:uppercase;margin-bottom:30px;
+  }
+
+  /* ---------- event block: half the row ---------- */
+  .apj-event{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:0;
+    align-items:start;margin-bottom:100px;
+  }
+  .apj-event > div{padding:0 var(--apj-gutter);}
+
+  .apj-media{
+    aspect-ratio:1/1;overflow:hidden;border-radius:0;
+    background:var(--apj-surface);
+  }
+  .apj-media img{width:100%;height:100%;object-fit:cover;display:block;filter:sepia(.14) saturate(.8) hue-rotate(-7deg) contrast(1.08) brightness(.91);transition:var(--apj-ease);}
+
+  .apj-event h3{font-weight:500;font-size:26px;line-height:40px;letter-spacing:.8px;margin-bottom:6px;}
+  .apj-event .apj-place{font-weight:500;margin-bottom:24px;}
+  .apj-event p + p{margin-top:18px;}
+
+  /* ---------- "what's arranged" list ---------- */
+  .apj-includes{margin-top:34px;}
+  .apj-includes h4{
+    font-weight:500;font-size:14px;line-height:22px;letter-spacing:1.6px;
+    text-transform:uppercase;margin-bottom:16px;
+  }
+  .apj-includes ul{list-style:none;}
+  .apj-includes li{padding:10px 0;border-top:1px solid var(--apj-hairline);}
+  .apj-includes li:last-child{border-bottom:1px solid var(--apj-hairline);}
+
+  /* ---------- button (geometry of the site's .ce-button) ---------- */
+  .apj-btn{
+    display:inline-block;margin-top:36px;
+    font-weight:500;font-size:16px;line-height:27px;
+    padding:14px 35px;border-radius:10px;
+    background:var(--apj-ink);color:#F9F9F9;text-decoration:none;
+    transition:var(--apj-ease);
+  }
+  .apj-btn:hover{opacity:.78;}
+
+  /* ---------- price list ---------- */
+  .apj-shows{padding:0 var(--apj-gutter);}
+  .apj-shows h3{font-weight:500;font-size:26px;line-height:40px;letter-spacing:.8px;margin-bottom:8px;}
+  .apj-shows .apj-note{margin-bottom:34px;max-width:640px;}
+  .apj-list{
+    display:grid;grid-template-columns:repeat(2,1fr);
+    column-gap:60px;
+  }
+  .apj-list div{
+    display:flex;justify-content:space-between;align-items:baseline;gap:20px;
+    padding:14px 0;border-bottom:1px solid var(--apj-hairline);
+  }
+  .apj-list span:first-child{font-weight:500;}
+  .apj-list span:last-child{white-space:nowrap;}
+
+  @media (prefers-reduced-motion:reduce){
+    .apj-back,.apj-btn,.apj-media img{transition:none;}
+  }
+
+  /* ---------- tablet ---------- */
+  @media (max-width:1024px){
+    .apj{padding:100px 0 80px;}
+    .apj-head h2{font-size:42px;line-height:54px;}
+    .apj-head{margin-bottom:60px;}
+    .apj-list{column-gap:40px;}
+  }
+
+  /* ---------- mobile (xs variant) ---------- */
+  @media (max-width:767px){
+    .apj{padding:80px 0 60px;}
+    .apj-container{padding:0 20px;}
+    .apj-head h2{font-size:34px;line-height:46px;}
+    .apj-head{margin-bottom:40px;}
+    .apj-event{grid-template-columns:1fr;row-gap:34px;margin-bottom:70px;}
+    .apj-event > div,.apj-shows{padding:0;}
+    .apj-event h3,.apj-shows h3{font-size:22px;line-height:34px;}
+    .apj-list{grid-template-columns:1fr;}
+  }
+</style>
+
+<style>
+  /* ---------- catalogue grid ---------- */
+  .apj-media{position:relative;}
+  .apj-ph{
+    position:absolute;inset:0;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:6px;text-align:center;padding:20px;
+    border:1px solid var(--apj-hairline);
+  }
+  .apj-ph span{font-size:13px;line-height:20px;letter-spacing:.4px;opacity:.7;}
+  .apj-ph code{font-size:11px;line-height:18px;opacity:.5;word-break:break-all;}
+
+  .apj-catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:0;}
+  .apj-catalog > div{padding:0 var(--apj-gutter);margin-bottom:70px;}
+
+  .apj-card{display:block;text-decoration:none;color:inherit;transition:var(--apj-ease);}
+  .apj-card .apj-media{margin-bottom:28px;}
+  .apj-card:hover .apj-media img{opacity:.72;}
+  .apj-card h3{font-weight:500;font-size:26px;line-height:40px;letter-spacing:.8px;margin-bottom:4px;color:var(--apj-blue);}
+  .apj-card .apj-place{font-weight:500;margin-bottom:12px;}
+  .apj-card p{font-size:16px;line-height:30px;}
+
+  @media (max-width:767px){
+    .apj-catalog{grid-template-columns:1fr;}
+    .apj-catalog > div{padding:0;margin-bottom:55px;}
+    .apj-card h3{font-size:22px;line-height:34px;}
+  }
+</style>
+</head>
+<body>
+
+<section class="apj" id="art-fashion">
+  <div class="apj-container">
+    <div class="apj-row">
+
+      <a class="apj-back" href="index.html#journeys">← Apricity</a>
+
+      <div class="apj-head">
+        <h2>Art &amp; Fashion</h2>
+        <p>The season, seen from the inside. Front rows, private previews before the doors open, and the people behind the collections.</p>
+      </div>
+
+      <p class="apj-eyebrow">Upcoming</p>
+
+      <div class="apj-catalog">
+
+        <!-- EVENT 1 -->
+        <div>
+          <a class="apj-card" href="apricity-event-paris-fashion-week.html">
+            <div class="apj-media">
+              <img src="images/event-paris-fashion-week.jpg" alt="Paris Fashion Week">
+            </div>
+            <h3>Paris Fashion Week</h3>
+            <p class="apj-place">Paris · 28 September — 6 October 2026</p>
+            <p>Eighteen houses to choose from, fittings and stylists arranged, and the week built end to end around what you want to see.</p>
+          </a>
+        </div>
+
+        <!-- EVENT 2 -->
+        <div>
+          <a class="apj-card" href="apricity-event-art-basel-paris.html">
+            <div class="apj-media">
+              <img src="images/event-art-basel-paris.jpg" alt="Art Basel Paris">
+            </div>
+            <h3>Art Basel Paris</h3>
+            <p class="apj-place">Paris &amp; Normandy · October 2026 · six days</p>
+            <p>From the Salon des Refusés to Art Basel: dealers, private rooms and Normandy, over six days.</p>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
