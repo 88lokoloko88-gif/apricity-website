@@ -71,10 +71,6 @@
     .instagram-grid a { display: block; aspect-ratio: 1; overflow: hidden; background: var(--paper); }
     .instagram-grid img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.14) saturate(.8) hue-rotate(-7deg) contrast(1.08) brightness(.91); transition: transform var(--ease), filter var(--ease); }
     .instagram-grid a:hover img { transform: scale(1.04); filter: sepia(.14) saturate(.86) hue-rotate(-7deg) contrast(1.08) brightness(.94); }
-    .contact-channels { position: fixed; z-index: 5; right: 0; top: 50%; display: grid; border-radius: 10px 0 0 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(32,36,44,.16); }
-    .contact-channels a { display: grid; width: 42px; height: 46px; place-items: center; color: #fff; text-decoration: none; font: 600 18px/1 'Manrope', sans-serif; }
-    .contact-channels a:first-child { background: #20c76a; }
-    .contact-channels a:last-child { background: #269bd7; }
     .cookie-dialog { position: fixed; z-index: 10; inset: auto 24px 24px auto; width: min(420px, calc(100% - 48px)); padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); box-shadow: 0 18px 50px rgba(32,36,44,.2); }
     .cookie-dialog[hidden] { display: none; }
     .cookie-dialog h2 { margin-bottom: 10px; font-size: 24px; letter-spacing: -1px; }
@@ -102,7 +98,7 @@
     .footer-logo { display: flex; justify-content: center; align-items: start; }
     .footer-logo img { width: 270px; height: auto; }
     @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; } .journeys .section-head { gap: 6%; } .contact-layout { gap: 8%; } .instagram-grid { grid-template-columns: repeat(3, 1fr); row-gap: 12px; } }
-    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: 72px; } .nav-links a:not(.nav-cta) { display: none; } .hero { padding: 72px 20px 60px; } h1 { letter-spacing: -3px; } .journeys { padding: 48px 0 90px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .card-section-inner { grid-template-columns: 1fr; gap: 0; } .card-section-video { width: min(280px, 100%); height: 158px; margin: 0 auto 28px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { margin-top: 45px; gap: 36px 12px; } .card-meta h3 { font-size: 18px; } .card-text { font-size: 13px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 48px 24px; min-height: 0; } .footer-logo { grid-column: 1 / -1; justify-content: start; } .footer-logo img { width: 230px; } }
+    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: auto; min-height: 72px; padding: 14px 0; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; font-size: 12px; } .nav-links a { white-space: nowrap; } .nav-cta { padding: 8px 14px; } .hero { padding: 72px 20px 60px; } h1 { letter-spacing: -3px; } .journeys { padding: 48px 0 90px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .card-section-inner { grid-template-columns: 1fr; gap: 0; } .card-section-video { width: min(280px, 100%); height: 158px; margin: 0 auto 28px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { margin-top: 45px; gap: 36px 12px; } .card-meta h3 { font-size: 18px; } .card-text { font-size: 13px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .footer-links { gap: 14px; } .footer-logo { justify-content: flex-start; } .footer-logo img { width: 230px; } }
       @media (max-width: 650px) {
       }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
@@ -242,10 +238,6 @@
       </div>
     </div>
   </footer>
-  <div class="contact-channels" aria-label="Apricity social contacts">
-    <a href="https://wa.me/971547291699" aria-label="Apricity on WhatsApp">◔</a>
-    <a href="https://t.me/+971547291699" aria-label="Apricity on Telegram">➤</a>
-  </div>
   <div class="cookie-dialog" id="cookie-settings" role="dialog" aria-modal="true" aria-labelledby="cookie-settings-title" hidden>
     <h2 id="cookie-settings-title">Cookie Settings</h2>
     <p>Choose whether to allow optional cookies. Essential cookies are always active.</p>
