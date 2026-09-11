@@ -51,7 +51,8 @@
     .journeys .section-intro { margin: 17px auto 0; }
     .card-section { padding: 20px 0 24px; background: var(--white); }
     .card-section-inner { display: grid; grid-template-columns: 260px 1fr; align-items: center; gap: 44px; max-width: 760px; margin: 0 auto; }
-    .card-section-video { display: block; width: 260px; height: 146px; object-fit: contain; object-position: center; border-radius: 12px; background: #fff; }
+    .card-section-media { display: block; width: 260px; height: 146px; border-radius: 12px; background: #fff; overflow: hidden; }
+    .card-section-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.28); transform-origin: center; }
     .card-section-copy h2 { margin-bottom: 12px; font-size: 30px; letter-spacing: -1.5px; animation: card-title-reveal .8s cubic-bezier(.19,1,.22,1) both; }
     .card-section-copy p { max-width: 470px; color: var(--muted); font-size: 15px; line-height: 1.55; animation: card-copy-reveal .8s .14s cubic-bezier(.19,1,.22,1) both; }
     @keyframes card-title-reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
@@ -98,7 +99,7 @@
     .footer-logo { display: flex; justify-content: center; align-items: start; }
     .footer-logo img { width: 270px; height: auto; }
     @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(2, 1fr); row-gap: 48px; } .journeys .section-head { gap: 6%; } .contact-layout { gap: 8%; } .instagram-grid { grid-template-columns: repeat(3, 1fr); row-gap: 12px; } }
-    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: auto; min-height: 72px; padding: 14px 0; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; font-size: 12px; } .nav-links a { white-space: nowrap; } .nav-cta { padding: 8px 14px; } .hero { padding: 72px 20px 60px; } h1 { letter-spacing: -3px; } .journeys { padding: 48px 0 90px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .card-section-inner { grid-template-columns: 1fr; gap: 0; } .card-section-video { width: min(280px, 100%); height: 158px; margin: 0 auto 28px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { margin-top: 45px; gap: 36px 12px; } .card-meta h3 { font-size: 18px; } .card-text { font-size: 13px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .footer-links { gap: 14px; } .footer-logo { justify-content: flex-start; } .footer-logo img { width: 230px; } }
+    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: auto; min-height: 72px; padding: 14px 0; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; font-size: 12px; } .nav-links a { white-space: nowrap; } .nav-cta { padding: 8px 14px; } .hero { padding: 72px 20px 60px; } h1 { letter-spacing: -3px; } .journeys { padding: 48px 0 90px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .card-section-inner { grid-template-columns: 1fr; gap: 0; } .card-section-media { width: min(280px, 100%); height: 158px; margin: 0 auto 28px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { margin-top: 45px; gap: 36px 12px; } .card-meta h3 { font-size: 18px; } .card-text { font-size: 13px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .footer-links { gap: 14px; } .footer-logo { justify-content: flex-start; } .footer-logo img { width: 230px; } }
       @media (max-width: 650px) {
       }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
@@ -163,10 +164,12 @@
 
     <section class="card-section" aria-labelledby="card-title">
       <div class="shell card-section-inner">
-        <video class="card-section-video" autoplay muted loop playsinline preload="auto" poster="images/event-art-basel-paris.jpg" aria-label="Apricity card animation">
-          <source src="images/APRICITY_Card_Animation_Cropped_White_BG.mp4" type="video/mp4">
-          Apricity card animation
-        </video>
+        <div class="card-section-media">
+          <video class="card-section-video" autoplay muted loop playsinline preload="auto" poster="images/event-art-basel-paris.jpg" aria-label="Apricity card animation">
+            <source src="images/APRICITY-3D-White.mp4" type="video/mp4">
+            Apricity card animation
+          </video>
+        </div>
         <div class="card-section-copy">
           <h2 id="card-title">One card, everywhere.</h2>
           <p>Pay any bill with the Apricity card and top it up with cryptocurrency, wherever you are.</p>
@@ -256,6 +259,8 @@
     document.querySelector('[data-cookie-close]').addEventListener('click', function () {
       document.querySelector('.cookie-dialog').hidden = true;
     });
+    // card animation plays faster, roughly matching the hero video's pace
+    document.querySelector('.card-section-video').playbackRate = 1.5;
   </script>
 </body>
 </html>
