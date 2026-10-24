@@ -79,7 +79,7 @@
     .cookie-actions { display: flex; gap: 10px; margin-top: 18px; }
     .cookie-actions button { border: 0; border-radius: 8px; padding: 10px 15px; background: #000; color: #fff; cursor: pointer; font: 500 13px/1 'Manrope', sans-serif; }
     .cookie-actions a { padding: 10px 4px; color: var(--ink); font-size: 13px; }
-    .journey-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .journey-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 56px 16px; }
     .journey-card { display: block; text-decoration: none; }
     .card-image { aspect-ratio: 1; overflow: hidden; background: var(--paper); }
     .card-image img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.14) saturate(.8) hue-rotate(-7deg) contrast(1.08) brightness(.91); transition: transform var(--ease), filter var(--ease); }
@@ -88,6 +88,12 @@
     .card-meta h3 { color: var(--muted); font: 500 21px/1.25 'Manrope', sans-serif; }
     .arrow { color: var(--blue); font-size: 19px; }
     .card-text { max-width: 245px; margin-top: 10px; color: var(--muted); font-size: 14px; line-height: 1.5; }
+    /* new directions wait for their photographs */
+    .card-image-placeholder { display: grid; place-items: center; color: var(--muted); font: 600 11px/1.4 'Manrope', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
+    .calendar-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 64px; color: var(--blue); font: 500 15px/1 'Manrope', sans-serif; text-decoration: none; }
+    .calendar-link span { font-size: 19px; transition: transform var(--ease); }
+    .calendar-link:hover span { transform: translateX(5px); }
+    .journeys-foot { text-align: center; }
     footer { padding: 72px 0 62px; background: var(--white); color: var(--muted); font-size: 16px; }
     .footer-grid { display: grid; grid-template-columns: 1.1fr 1fr 1fr 1.35fr; gap: 46px; min-height: 300px; }
     .footer-title { margin: 0 0 28px; color: var(--ink); font: 500 22px/1.2 'Manrope', sans-serif; }
@@ -110,6 +116,7 @@
     <nav class="nav-links" aria-label="Main navigation">
       <a href="#about-us">About Us</a>
       <a href="#journeys">Our Journeys</a>
+      <a href="apricity-calendar.html">Calendar</a>
       <a href="#contact">Contact</a>
       <a class="nav-cta" href="#footer-contact">Get in touch</a>
     </nav>
@@ -153,11 +160,29 @@
             <div class="card-meta"><h3>Sport</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">The Paddock Club, Centre Court, the Clásico and the final.</p>
           </a>
+          <a class="journey-card" href="apricity-cinema.html">
+            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-meta"><h3>Cinema</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
+            <p class="card-text">Red carpets in Cannes and Venice, and the awards season after-parties.</p>
+          </a>
+          <a class="journey-card" href="apricity-lifestyle.html">
+            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-meta"><h3>Lifestyle</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
+            <p class="card-text">Monaco balls, Venice carnival and New Year on a yacht.</p>
+          </a>
+          <a class="journey-card" href="apricity-exclusive.html">
+            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-meta"><h3>Exclusive</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
+            <p class="card-text">Private dinners, galas and rooms that do not take bookings.</p>
+          </a>
           <a class="journey-card" href="apricity-spiritual.html">
             <div class="card-image"><img src="images/journey-spiritual.jpg" alt="A quiet view towards the sea"></div>
             <div class="card-meta"><h3>Spiritual</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Retreats, ceremonies and distance from everything.</p>
           </a>
+        </div>
+        <div class="journeys-foot">
+          <a class="calendar-link" href="apricity-calendar.html">See the full calendar <span aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </section>
@@ -224,6 +249,7 @@
           <nav class="footer-links" aria-label="Apricity links">
             <a href="#about">About</a>
             <a href="#journeys">Our Journeys</a>
+            <a href="apricity-calendar.html">Calendar</a>
             <a href="mailto:hello@apricity.ooo?subject=Apricity enquiry">Contact</a>
             <a href="https://www.instagram.com/apricity.ooo/">Instagram</a>
           </nav>

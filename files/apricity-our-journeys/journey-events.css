@@ -1,0 +1,28 @@
+/* Event list on direction pages — rendered by journey-events.js.
+   Uses the same tokens as the .apj pages: #777681 text, blue only for names and prices. */
+.apj-events{padding:0 15px;}
+.apj-ev{
+  display:grid;grid-template-columns:180px 1fr 200px;gap:30px;
+  padding:24px 0;border-top:1px solid rgba(119,118,129,.18);
+}
+.apj-ev:last-child{border-bottom:1px solid rgba(119,118,129,.18);}
+.apj-ev-date{font-weight:500;}
+.apj-ev h3{font-weight:500;font-size:22px;line-height:34px;letter-spacing:.8px;color:#00289B;}
+.apj-ev .apj-place{font-weight:500;margin-bottom:6px;}
+.apj-ev-price{text-align:right;font-weight:500;color:#00289B;}
+.apj-ev-price a{color:inherit;text-decoration:none;}
+.apj-ev-price a:hover{opacity:.6;}
+.apj-events-empty{padding:0 15px;max-width:640px;}
+.apj-calendar-link{
+  display:inline-block;margin:40px 15px 0;font-weight:500;
+  color:#00289B;text-decoration:none;transition:0.7s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.apj-calendar-link:hover{opacity:.6;}
+
+@media (max-width:767px){
+  .apj-events,.apj-events-empty{padding:0;}
+  .apj-ev{grid-template-columns:1fr;gap:4px;}
+  .apj-ev-price{text-align:left;margin-top:8px;}
+  .apj-ev h3{font-size:20px;line-height:30px;}
+  .apj-calendar-link{margin-left:0;}
+}

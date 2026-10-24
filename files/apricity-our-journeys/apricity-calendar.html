@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apricity — Experience Calendar</title>
+
+<!--
+  ============================================================
+  EXPERIENCE CALENDAR — every event across all directions
+  ============================================================
+  Content ported 1:1 from the "Apricity Experience Calendar"
+  artifact, restyled with the site tokens (see README).
+  Event data lives in calendar-data.js, shared with the
+  direction pages. Upcoming / past is decided by today's date.
+
+  ?genre=music or ?genre=art,fashion preselects the Genre filter
+  (the direction pages link here that way).
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --apj-ink:       #777681;
+    --apj-blue:      #00289B;
+    --apj-surface:   #F9F9F9;
+    --apj-hairline:  rgba(119,118,129,.18);
+    --apj-container: 1300px;
+    --apj-row:       1270px;
+    --apj-gutter:    15px;
+    --apj-ease:      0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    --st-confirmed:  #2E6B3F;
+    --st-tbc:        #8A6A16;
+    --st-request:    #5A4A8A;
+  }
+
+  .apj *{box-sizing:border-box;margin:0;padding:0;}
+  body{margin:0;background:#fff;}
+
+  .apj{
+    font-family:'Poppins',Arial,sans-serif;
+    font-weight:400;font-size:16px;line-height:30px;
+    color:var(--apj-ink);background:#fff;
+    padding:150px 0 100px;
+  }
+  .apj-container{max-width:var(--apj-container);margin:0 auto;padding:0 var(--apj-gutter);}
+  .apj-row{max-width:var(--apj-row);margin:0 auto;}
+
+  /* ---------- back link ---------- */
+  .apj-back{
+    display:inline-block;font-weight:500;text-decoration:none;
+    color:var(--apj-ink);margin-bottom:40px;transition:var(--apj-ease);
+  }
+  .apj-back:hover{opacity:.6;}
+
+  /* ---------- header ---------- */
+  .apj-eyebrow{
+    font-weight:500;font-size:14px;line-height:22px;letter-spacing:1.6px;
+    text-transform:uppercase;color:var(--apj-blue);margin-bottom:14px;
+  }
+  .apj-head{max-width:840px;margin-bottom:40px;}
+  .apj-head h2{font-weight:500;font-size:54px;line-height:68px;letter-spacing:.8px;margin-bottom:20px;}
+  .apj-head p{max-width:680px;}
+  .cal-stats{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;font-size:13px;line-height:22px;letter-spacing:1px;text-transform:uppercase;}
+  .cal-stats b{font-weight:500;font-size:20px;letter-spacing:0;color:#20242c;margin-right:6px;}
+
+  /* ---------- filters ---------- */
+  .cal-toolbar{display:grid;gap:12px;padding:26px 0;border-top:1px solid var(--apj-hairline);border-bottom:1px solid var(--apj-hairline);margin-bottom:30px;}
+  .cal-filter{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .cal-label{min-width:90px;font-weight:500;font-size:12px;line-height:22px;letter-spacing:1.6px;text-transform:uppercase;}
+  .cal-chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{
+    font:500 13px/1 'Poppins',Arial,sans-serif;padding:9px 15px;border-radius:100px;
+    border:1px solid var(--apj-hairline);background:#fff;color:var(--apj-ink);cursor:pointer;
+    transition:background .2s,color .2s,border-color .2s;
+  }
+  .chip:hover{border-color:var(--apj-ink);}
+  .chip[aria-pressed="true"]{background:var(--apj-blue);border-color:var(--apj-blue);color:#fff;}
+  .chip:focus-visible,th button:focus-visible,.cal-search:focus-visible{outline:2px solid var(--apj-blue);outline-offset:2px;}
+  .cal-search{
+    font:400 14px/1 'Poppins',Arial,sans-serif;padding:10px 14px;border:1px solid var(--apj-hairline);
+    border-radius:10px;background:var(--apj-surface);color:#20242c;width:min(100%,320px);
+  }
+  .cal-group{display:inline-flex;gap:8px;align-items:center;font-size:13px;cursor:pointer;}
+
+  /* ---------- table ---------- */
+  .cal-tablewrap{overflow-x:auto;}
+  table{border-collapse:collapse;width:100%;min-width:980px;font-size:15px;line-height:24px;}
+  th{
+    text-align:left;padding:12px 14px;border-bottom:1px solid var(--apj-ink);
+    font-weight:500;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;white-space:nowrap;
+  }
+  th button{all:unset;cursor:pointer;display:inline-flex;gap:6px;align-items:center;}
+  th button::after{content:"↕";opacity:.4;font-size:10px;}
+  th[aria-sort="ascending"] button::after{content:"↑";opacity:1;}
+  th[aria-sort="descending"] button::after{content:"↓";opacity:1;}
+  td{padding:16px 14px;border-bottom:1px solid var(--apj-hairline);vertical-align:top;}
+  td.date{font-weight:500;font-size:14px;white-space:nowrap;font-variant-numeric:tabular-nums;}
+  td.title{font-weight:500;font-size:16px;color:var(--apj-blue);}
+  td.title small{display:block;font-weight:400;font-size:13px;line-height:20px;color:var(--apj-ink);margin-top:4px;}
+  td.cat{font-size:12px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;}
+  td.cat small{display:block;text-transform:none;letter-spacing:0;font-size:12px;}
+  td.acc{font-size:14px;max-width:340px;}
+  td.price{font-weight:500;font-size:14px;white-space:nowrap;color:var(--apj-blue);font-variant-numeric:tabular-nums;}
+  td.price a{color:inherit;text-decoration:none;}
+  td.price a:hover{opacity:.6;}
+  .st{font-size:11px;letter-spacing:1px;text-transform:uppercase;white-space:nowrap;font-weight:500;}
+  .st::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:7px;background:currentColor;}
+  .st.confirmed{color:var(--st-confirmed);} .st.date_tbc{color:var(--st-tbc);} .st.on_request{color:var(--st-request);}
+  .flag{font-size:10px;letter-spacing:1.4px;text-transform:uppercase;color:var(--apj-blue);margin-left:8px;}
+  .tag{font-size:10px;line-height:16px;font-weight:500;color:var(--apj-ink);margin-left:8px;border:1px solid var(--apj-hairline);padding:1px 5px;border-radius:3px;white-space:nowrap;}
+  .tag.cand{color:var(--st-tbc);border-color:var(--st-tbc);}
+  .month-row td{
+    background:var(--apj-surface);padding:8px 14px;border-bottom:0;
+    font-weight:500;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+  }
+  .cal-empty{padding:40px;text-align:center;font-style:italic;}
+
+  /* ---------- legend & source note ---------- */
+  .cal-foot{margin-top:40px;max-width:900px;font-size:13px;line-height:22px;}
+  .cal-legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:14px;}
+
+  @media (prefers-reduced-motion:reduce){
+    .apj-back,.chip{transition:none;}
+  }
+
+  /* ---------- tablet ---------- */
+  @media (max-width:1024px){
+    .apj{padding:100px 0 80px;}
+    .apj-head h2{font-size:42px;line-height:54px;}
+  }
+
+  /* ---------- mobile (xs variant) ---------- */
+  @media (max-width:767px){
+    .apj{padding:80px 0 60px;}
+    .apj-container{padding:0 20px;}
+    .apj-head h2{font-size:34px;line-height:46px;}
+    .cal-label{min-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<section class="apj" id="calendar">
+  <div class="apj-container">
+    <div class="apj-row">
+
+      <a class="apj-back" href="index.html#journeys">← Apricity</a>
+
+      <div class="apj-head">
+        <p class="apj-eyebrow">Apricity · Impossible Access</p>
+        <h2>Experience Catalogue <span style="white-space:nowrap">2026–27</span></h2>
+        <p><b>Hot</b> is the signature list: the events Apricity leads with. <b>Core</b> is the main season. <b>Also available</b> is everything else we can arrange on request. <b>Upcoming</b> shows live offers with prices; past events stay on record without pricing.</p>
+        <div class="cal-stats" id="stats"></div>
+      </div>
+
+      <div class="cal-toolbar">
+        <div class="cal-filter"><span class="cal-label">Tier</span><div class="cal-chips" id="tierChips"></div></div>
+        <div class="cal-filter"><span class="cal-label">View</span><div class="cal-chips" id="viewChips"></div></div>
+        <div class="cal-filter"><span class="cal-label">Genre</span><div class="cal-chips" id="catChips"></div></div>
+        <div class="cal-filter"><span class="cal-label">Status</span><div class="cal-chips" id="statChips"></div></div>
+        <div class="cal-filter">
+          <span class="cal-label">Search</span>
+          <input class="cal-search" type="search" id="q" placeholder="Monaco, tennis, backstage…" aria-label="Search events">
+          <label class="cal-group"><input type="checkbox" id="groupMonths" checked> Group by month</label>
+        </div>
+      </div>
+
+      <div class="cal-tablewrap">
+        <table>
+          <thead><tr>
+            <th data-key="date" aria-sort="ascending"><button>Date</button></th>
+            <th data-key="title"><button>Event</button></th>
+            <th data-key="cat"><button>Genre</button></th>
+            <th data-key="loc"><button>Location</button></th>
+            <th>Access</th>
+            <th data-key="price"><button>From</button></th>
+            <th data-key="status"><button>Status</button></th>
+          </tr></thead>
+          <tbody id="body"></tbody>
+        </table>
+      </div>
+
+      <div class="cal-foot">
+        <div class="cal-legend">
+          <span><b class="st confirmed">Confirmed</b> dates listed in source</span>
+          <span><b class="st date_tbc">Date TBC</b> month known, day not set</span>
+          <span><b class="st on_request">On request</b> no fixed date</span>
+        </div>
+        <p>Source: Apricity partner presentation v4. Season 2026 assumed; dates to be verified against organisers' official calendars. Items marked LEGAL involve named public figures and need legal review of wording before publication. Items marked TO SOURCE are 2026–27 additions from the competitor scan with no confirmed partner yet. Prices are shown for upcoming events only and are indicative starting points per person unless stated; past events are kept for the record without pricing.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="calendar-data.js"></script>
+<script>
+  var E = APRICITY_EVENTS, CATS = APRICITY_CATS, STATUS = APRICITY_STATUS, M = APRICITY_MONTHS;
+  var VIEWS = { upcoming: 'Upcoming', past: 'Past', all: 'All' };
+  var TIERS = { hot: 'Hot', core: 'Core', list: 'Also available' };
+  var state = { view: 'upcoming', tiers: new Set(['hot', 'core']), cats: new Set(), stats: new Set(), q: '', sort: 'date', dir: 1, group: true };
+  var keyOf = {
+    date: apricityDateKey,
+    title: function (e) { return e.title.toLowerCase(); },
+    cat: function (e) { return CATS[e.cat] + e.sub; },
+    loc: function (e) { return apricityLoc(e).toLowerCase(); },
+    price: function (e) { return e.amt != null ? e.amt : 1e9; },
+    status: function (e) { return ['confirmed', 'date_tbc', 'on_request'].indexOf(e.status); }
+  };
+  var $ = function (id) { return document.getElementById(id); };
+
+  // a direction page links here as ?genre=art,fashion
+  var genre = new URLSearchParams(location.search).get('genre');
+  if (genre) {
+    genre.split(',').forEach(function (k) { if (CATS[k]) state.cats.add(k); });
+    // a direction page wants its whole list, not only the signature tiers
+    if (state.cats.size) state.tiers = new Set(Object.keys(TIERS));
+  }
+
+  function chip(label, onclick) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'chip'; b.textContent = label; b.onclick = onclick;
+    return b;
+  }
+  // multi-select chips with an "All" chip that clears the set
+  function multiChips(container, map, set) {
+    var all = chip('All', function () { set.clear(); render(); });
+    all.dataset.all = '1';
+    $(container).appendChild(all);
+    Object.keys(map).forEach(function (k) {
+      var b = chip(map[k], function () { set.has(k) ? set.delete(k) : set.add(k); render(); });
+      b.dataset.k = k;
+      $(container).appendChild(b);
+    });
+  }
+  multiChips('catChips', CATS, state.cats);
+  multiChips('statChips', STATUS, state.stats);
+  Object.keys(TIERS).forEach(function (k) {
+    var b = chip(TIERS[k], function () {
+      state.tiers.has(k) ? state.tiers.delete(k) : state.tiers.add(k);
+      if (!state.tiers.size) state.tiers.add(k);
+      render();
+    });
+    b.dataset.k = k;
+    $('tierChips').appendChild(b);
+  });
+  Object.keys(VIEWS).forEach(function (k) {
+    var b = chip(VIEWS[k], function () { state.view = k; render(); });
+    b.dataset.k = k;
+    $('viewChips').appendChild(b);
+  });
+
+  function syncChips(container, isOn) {
+    $(container).querySelectorAll('.chip').forEach(function (b) { b.setAttribute('aria-pressed', String(isOn(b))); });
+  }
+
+  document.querySelectorAll('th[data-key] button').forEach(function (b) {
+    b.onclick = function () {
+      var k = b.parentElement.dataset.key;
+      if (state.sort === k) state.dir *= -1; else { state.sort = k; state.dir = 1; }
+      render();
+    };
+  });
+  $('q').oninput = function (e) { state.q = e.target.value.trim().toLowerCase(); render(); };
+  $('groupMonths').onchange = function (e) { state.group = e.target.checked; render(); };
+
+  function render() {
+    syncChips('catChips', function (b) { return b.dataset.all ? state.cats.size === 0 : state.cats.has(b.dataset.k); });
+    syncChips('statChips', function (b) { return b.dataset.all ? state.stats.size === 0 : state.stats.has(b.dataset.k); });
+    syncChips('tierChips', function (b) { return state.tiers.has(b.dataset.k); });
+    syncChips('viewChips', function (b) { return b.dataset.k === state.view; });
+    document.querySelectorAll('th[data-key]').forEach(function (th) {
+      th.setAttribute('aria-sort', th.dataset.key === state.sort ? (state.dir === 1 ? 'ascending' : 'descending') : 'none');
+    });
+
+    var rows = E.filter(function (e) {
+      return state.tiers.has(e.tier)
+        && (state.view === 'all' || (state.view === 'upcoming') === apricityIsUpcoming(e))
+        && (state.cats.size === 0 || state.cats.has(e.cat))
+        && (state.stats.size === 0 || state.stats.has(e.status))
+        && (!state.q || [e.title, e.sub, CATS[e.cat], apricityLoc(e), e.access, e.note].join(' ').toLowerCase().indexOf(state.q) !== -1);
+    });
+    var kf = keyOf[state.sort];
+    rows.sort(function (a, b) {
+      var x = kf(a), y = kf(b);
+      return (x < y ? -1 : x > y ? 1 : apricityDateKey(a) - apricityDateKey(b)) * state.dir;
+    });
+
+    var tb = $('body'), html = '', lastMonth = null;
+    if (!rows.length) html = '<tr><td colspan="7" class="cal-empty">No events match these filters.</td></tr>';
+    rows.forEach(function (e) {
+      if (state.group && state.sort === 'date') {
+        var m = e.sm == null ? 'On request · dates set individually' : M[e.sm] + ' ' + e.y;
+        if (m !== lastMonth) { lastMonth = m; html += '<tr class="month-row"><td colspan="7">' + m + '</td></tr>'; }
+      }
+      var price = !apricityIsUpcoming(e) ? '—'
+        : e.amt ? apricityPrice(e)
+        : '<a href="mailto:hello@apricity.ooo?subject=' + encodeURIComponent(e.title) + '">Request access</a>';
+      html += '<tr>' +
+        '<td class="date">' + apricityFmtDate(e) + '</td>' +
+        '<td class="title">' + e.title +
+          (e.tier === 'hot' ? '<span class="flag">Hot</span>' : '') +
+          (e.cand ? '<span class="tag cand">To source</span>' : '') +
+          (e.legal ? '<span class="tag">LEGAL</span>' : '') +
+          (e.note ? '<small>' + e.note + '</small>' : '') + '</td>' +
+        '<td class="cat">' + CATS[e.cat] + (e.sub ? '<small>' + e.sub + '</small>' : '') + '</td>' +
+        '<td>' + apricityLoc(e) + '</td>' +
+        '<td class="acc">' + e.access + '</td>' +
+        '<td class="price">' + price + '</td>' +
+        '<td><span class="st ' + e.status + '">' + STATUS[e.status] + '</span></td>' +
+      '</tr>';
+    });
+    tb.innerHTML = html;
+
+    var count = function (f) { return E.filter(f).length; };
+    var up = count(apricityIsUpcoming);
+    $('stats').innerHTML =
+      '<span><b>' + rows.length + '</b> shown</span>' +
+      '<span><b>' + up + '</b> upcoming</span>' +
+      '<span><b>' + (E.length - up) + '</b> past</span>' +
+      '<span><b>' + E.length + '</b> total</span>' +
+      '<span><b>' + count(function (e) { return e.status === 'confirmed'; }) + '</b> confirmed</span>' +
+      '<span><b>' + count(function (e) { return e.status === 'date_tbc'; }) + '</b> date TBC</span>' +
+      '<span><b>' + count(function (e) { return e.status === 'on_request'; }) + '</b> on request</span>';
+  }
+  render();
+</script>
+
+</body>
+</html>
