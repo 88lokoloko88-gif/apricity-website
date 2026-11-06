@@ -3,8 +3,34 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Apricity creates access-led journeys through fashion, art and the places that shape them.">
-  <title>Apricity — Journeys, arranged around you</title>
+  <title>Apricity — VIP Event Access &amp; Bespoke Luxury Travel</title>
+  <meta name="description" content="Apricity is a luxury concierge and travel company. VIP access to fashion weeks, Formula 1, film festivals and private events, with travel arranged around you.">
+  <!-- staging copy: remove this line and add a canonical link when the site goes live on apricity.ooo -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Apricity">
+  <meta property="og:title" content="Apricity — VIP Event Access &amp; Bespoke Luxury Travel">
+  <meta property="og:description" content="VIP access to fashion weeks, Formula 1, film festivals and private events, with travel arranged around you.">
+  <meta property="og:url" content="https://88lokoloko88-gif.github.io/apricity-website/files/apricity-our-journeys/index.html">
+  <meta property="og:image" content="https://88lokoloko88-gif.github.io/apricity-website/files/apricity-our-journeys/images/og-apricity.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    "name": "Apricity",
+    "legalName": "Apricity Tickets & Events Ltd",
+    "description": "Luxury concierge and travel company: VIP event access, exclusive experiences and bespoke travel.",
+    "url": "https://apricity.ooo/",
+    "logo": "https://apricity.ooo/wp-content/uploads/2024/02/Apricity-Logo.png",
+    "email": "hello@apricity.ooo",
+    "telephone": "+971547291699",
+    "address": { "@type": "PostalAddress", "addressLocality": "London", "addressCountry": "GB" },
+    "sameAs": ["https://www.instagram.com/apricity.ooo/"]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
@@ -29,40 +55,46 @@
     .nav-links a { color: var(--white); text-decoration: none; transition: opacity var(--ease); }
     .nav-links a:hover { opacity: .5; }
     .nav-cta { border: 1px solid var(--white); border-radius: 100px; padding: 9px 18px; }
-    .hero { position: relative; min-height: 100vh; padding: 84px 32px 70px; display: grid; place-items: center; overflow: hidden; background: #23272b; color: var(--white); }
+    .hero { position: relative; min-height: max(100vh, 760px); padding: 84px 32px 64px; display: grid; place-items: end center; overflow: hidden; background: #23272b; color: var(--white); }
     .hero::after { position: absolute; inset: 0; z-index: 1; background: rgba(20, 14, 10, .38); content: ''; }
-    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .hero-content { position: relative; z-index: 2; text-align: center; }
+    /* the logo is drawn in the middle of the video: the frame sits high so the copy fits under it */
+    .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 72%; }
+    .hero-content { position: relative; z-index: 2; display: grid; justify-items: center; text-align: center; }
+    .hero-copy { max-width: 520px; margin-top: 16px; color: rgba(255, 255, 255, .86); font-size: 15px; line-height: 1.5; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: center; justify-content: center; margin-top: 28px; }
+    .hero-button { display: inline-flex; align-items: center; justify-content: center; min-width: 180px; padding: 13px 22px; border-radius: 10px; background: var(--white); color: #000; text-decoration: none; font: 500 14px/1 'Manrope', sans-serif; transition: opacity var(--ease); }
+    .hero-button:hover { opacity: .8; }
     .eyebrow { color: var(--blue); font: 600 11px/1.4 'Manrope', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
     h1, h2, h3, p { margin: 0; }
-    h1 { max-width: 700px; margin-top: 22px; color: var(--white); font: 500 clamp(54px, 7vw, 88px)/.98 'Manrope', sans-serif; letter-spacing: -4px; }
-    .hero-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 38px; color: var(--white); font: 500 15px/1 'Manrope', sans-serif; text-decoration: none; }
-    .hero-link span { font-size: 21px; transition: transform var(--ease); }
+    .hero-link { display: inline-flex; gap: 10px; align-items: center; color: var(--white); font: 500 13px/1 'Manrope', sans-serif; text-decoration: none; }
+    .hero-link span { font-size: 17px; transition: transform var(--ease); }
     .hero-link:hover span { transform: translateX(5px); }
     .image-note { display: none; }
-    .about-section { padding: 72px 0 68px; background: var(--white); }
+    .about-section { padding: 104px 0 56px; background: var(--white); }
     .about-title { max-width: 760px; margin: 0 auto; text-align: center; }
     .about-copy { max-width: 620px; margin: 24px auto 0; color: var(--muted); font-size: 18px; line-height: 1.6; text-align: center; }
-    .journeys { padding: 48px 0 140px; background: var(--white); }
+    .journeys { padding: 56px 0 120px; background: var(--white); }
     .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 58px; }
     .journeys .section-head { display: block; text-align: center; }
     .journeys .eyebrow { color: var(--muted); }
     h2 { font: 600 clamp(38px, 5vw, 64px)/1.05 'Manrope', sans-serif; letter-spacing: -3px; }
     .section-intro { max-width: 365px; color: var(--muted); }
-    .journeys .section-intro { margin: 17px auto 0; }
-    .card-section { padding: 20px 0 24px; background: var(--white); }
+    .journeys .section-intro { max-width: 620px; margin: 20px auto 0; font-size: 18px; line-height: 1.6; }
+    .card-section { padding: 24px 0 112px; background: var(--white); }
     /* stacked on the page's centre line, under the Our Journeys animation */
-    .card-section-inner { display: grid; justify-items: center; gap: 32px; max-width: 720px; margin: 0 auto; text-align: center; }
-    .card-section-media { display: block; width: 260px; height: 146px; border-radius: 12px; background: #fff; overflow: hidden; }
-    .card-section-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.28); transform-origin: center; }
-    .card-section-copy h2 { margin-bottom: 12px; font-size: 30px; letter-spacing: -1.5px; animation: card-title-reveal .8s cubic-bezier(.19,1,.22,1) both; }
-    .card-section-copy p { max-width: 470px; margin: 0 auto; color: var(--muted); font-size: 15px; line-height: 1.55; animation: card-copy-reveal .8s .14s cubic-bezier(.19,1,.22,1) both; }
+    .card-section-inner { display: grid; justify-items: center; gap: 40px; max-width: 720px; margin: 0 auto; text-align: center; }
+    .card-section-media { display: block; width: min(100%, 560px); aspect-ratio: 260 / 146; border-radius: 12px; background: #fff; overflow: hidden; }
+    .card-section-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+    .card-section-copy h2 { margin-bottom: 16px; font-size: clamp(32px, 4.4vw, 48px); letter-spacing: -2px; animation: card-title-reveal .8s cubic-bezier(.19,1,.22,1) both; }
+    .card-section-copy .footer-button { margin-top: 28px; }
+    .card-section-copy p { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: 18px; line-height: 1.55; animation: card-copy-reveal .8s .14s cubic-bezier(.19,1,.22,1) both; }
     @keyframes card-title-reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes card-copy-reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    .contact-section { padding: 118px 0 112px; background: var(--white); }
+    .contact-section { padding: 112px 0 112px; background: var(--white); }
     .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 12%; }
     .contact-title { margin-top: 14px; }
     .contact-copy { max-width: 470px; margin-top: 26px; color: var(--muted); }
+    .contact-section .footer-button { margin-top: 32px; }
     .contact-details { display: grid; gap: 34px; align-content: end; }
     .contact-detail span { display: block; margin-bottom: 7px; color: var(--muted); font-size: 14px; }
     .contact-detail a { color: var(--ink); font: 500 20px/1.3 'Manrope', sans-serif; text-decoration: none; }
@@ -81,8 +113,8 @@
     .cookie-actions { display: flex; gap: 10px; margin-top: 18px; }
     .cookie-actions button { border: 0; border-radius: 8px; padding: 10px 15px; background: #000; color: #fff; cursor: pointer; font: 500 13px/1 'Manrope', sans-serif; }
     .cookie-actions a { padding: 10px 4px; color: var(--ink); font-size: 13px; }
-    .journey-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 44px 16px; max-width: 920px; margin: 0 auto; }
-    .journey-card { display: block; text-decoration: none; }
+    .journey-grid { --cols: 4; display: flex; flex-wrap: wrap; justify-content: center; gap: 44px 16px; max-width: 920px; margin: 0 auto; }
+    .journey-card { display: block; flex: 0 0 calc((100% - (var(--cols) - 1) * 16px) / var(--cols)); text-decoration: none; }
     .card-image { aspect-ratio: 1; overflow: hidden; background: var(--paper); }
     .card-image img { width: 100%; height: 100%; object-fit: cover; filter: sepia(.14) saturate(.8) hue-rotate(-7deg) contrast(1.08) brightness(.91); transition: transform var(--ease), filter var(--ease); }
     .journey-card:hover .card-image img { transform: scale(1.035); filter: sepia(.14) saturate(.86) hue-rotate(-7deg) contrast(1.08) brightness(.94); }
@@ -90,13 +122,11 @@
     .card-meta h3 { color: var(--muted); font: 500 18px/1.25 'Manrope', sans-serif; }
     .arrow { color: var(--blue); font-size: 17px; }
     .card-text { max-width: 245px; margin-top: 8px; color: var(--muted); font-size: 13px; line-height: 1.5; }
-    /* new directions wait for their photographs */
-    .card-image-placeholder { display: grid; place-items: center; color: var(--muted); font: 600 11px/1.4 'Manrope', sans-serif; letter-spacing: 2px; text-transform: uppercase; }
     .calendar-link { display: inline-flex; gap: 12px; align-items: center; margin-top: 64px; color: var(--blue); font: 500 15px/1 'Manrope', sans-serif; text-decoration: none; }
     .calendar-link span { font-size: 19px; transition: transform var(--ease); }
     .calendar-link:hover span { transform: translateX(5px); }
     .journeys-foot { text-align: center; }
-    .journeys-video { display: block; width: min(100%, 720px); margin: 0 auto 72px; aspect-ratio: 1; }
+    .journeys-video { display: block; width: min(100%, 720px); margin: 0 auto 88px; aspect-ratio: 1080 / 936; }
     /* the video's off-white background (#fbf9f7) is lifted to the page white so its edge does not show */
     .journeys-video video { display: block; width: 100%; height: 100%; object-fit: contain; filter: brightness(1.025); }
     .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -110,8 +140,8 @@
     .footer-links a:hover { opacity: .55; }
     .footer-logo { display: flex; justify-content: center; align-items: start; }
     .footer-logo img { width: 270px; height: auto; }
-    @media (max-width: 900px) { .journey-grid { grid-template-columns: repeat(3, 1fr); row-gap: 40px; } .journeys .section-head { gap: 6%; } .contact-layout { gap: 8%; } .instagram-grid { grid-template-columns: repeat(3, 1fr); row-gap: 12px; } }
-    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: auto; min-height: 72px; padding: 14px 0; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; font-size: 12px; } .nav-links a { white-space: nowrap; } .nav-cta { padding: 8px 14px; } .hero { padding: 72px 20px 60px; } h1 { letter-spacing: -3px; } .journeys { padding: 48px 0 90px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .card-section-inner { gap: 0; } .card-section-media { width: min(280px, 100%); height: 158px; margin: 0 auto 28px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { margin-top: 45px; gap: 28px 10px; } .card-meta { padding-top: 10px; } .card-meta h3 { font-size: 14px; } .arrow { font-size: 14px; } .card-text { font-size: 11px; line-height: 1.45; } .about-copy { font-size: 16px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .footer-links { gap: 14px; } .footer-logo { justify-content: flex-start; } .footer-logo img { width: 230px; } }
+    @media (max-width: 900px) { .journey-grid { --cols: 3; row-gap: 40px; } .journeys .section-head { gap: 6%; } .contact-layout { gap: 8%; } .instagram-grid { grid-template-columns: repeat(3, 1fr); row-gap: 12px; } }
+    @media (max-width: 650px) { .shell { width: min(100% - 40px, 500px); } .nav { width: calc(100% - 40px); height: auto; min-height: 72px; padding: 14px 0; } .nav-links { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; font-size: 12px; } .nav-links a { white-space: nowrap; } .nav-cta { padding: 8px 14px; } .hero { min-height: max(100svh, 680px); padding: 120px 20px 40px; } .hero-bg { top: -30%; height: 130%; } .hero-copy { font-size: 14px; } .hero-button { width: 100%; } .about-section { padding: 72px 0 40px; } .journeys { padding: 40px 0 80px; } .journeys .section-head { display: block; text-align: center; } .journeys .section-intro { margin: 23px auto 0; } .journeys-video { margin-bottom: 56px; } .card-section { padding: 16px 0 80px; } .card-section-inner { gap: 0; } .card-section-media { width: 100%; margin: 0 auto 28px; } .card-section-copy p { font-size: 16px; } .contact-section { padding: 82px 0 82px; } .instagram-section { padding-bottom: 82px; } .section-head { display: block; } .section-intro { margin-top: 23px; } .journey-grid { --cols: 2; gap: 32px 16px; } .card-meta { padding-top: 12px; } .card-meta h3 { font-size: 16px; } .arrow { font-size: 15px; } .card-text { font-size: 13px; line-height: 1.5; } .about-copy { font-size: 16px; } .contact-layout { grid-template-columns: 1fr; gap: 45px; } .contact-details { gap: 24px; } .contact-detail a { font-size: 18px; } .instagram-head { display: block; margin-bottom: 30px; } .instagram-link { display: inline-block; margin-top: 25px; } .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; } footer { padding: 55px 0 42px; } .footer-grid { grid-template-columns: 1fr; gap: 38px; min-height: 0; } .footer-links { gap: 14px; } .footer-logo { justify-content: flex-start; } .footer-logo img { width: 230px; } }
       @media (max-width: 650px) {
       }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
@@ -130,9 +160,16 @@
 
   <main>
     <section class="hero" id="top">
-      <video class="hero-bg" autoplay muted loop playsinline aria-hidden="true">
-        <source src="https://apricity.ooo/wp-content/uploads/2024/02/Apricity-Video.mp4" type="video/mp4">
+      <video class="hero-bg" autoplay muted loop playsinline poster="images/hero-poster.jpg" aria-hidden="true">
+        <source src="assets/videos/apricity-hero.mp4" type="video/mp4">
       </video>
+      <div class="hero-content">
+        <p class="hero-copy">Apricity is a luxury concierge and travel company. We arrange the access, the journey and everything around it, entirely around you.</p>
+        <div class="hero-actions">
+          <a class="hero-button" href="#contact">Plan your journey</a>
+          <a class="hero-link" href="apricity-calendar.html">See the calendar <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
     </section>
 
     <section class="about-section" id="about-us" aria-labelledby="about-title">
@@ -144,46 +181,48 @@
 
     <section class="journeys" id="journeys">
       <div class="shell">
-        <!-- the title is drawn inside the video, so the heading stays for screen readers only -->
-        <h2 class="visually-hidden">Our Journeys</h2>
-        <a class="journeys-video" href="apricity-calendar.html" aria-label="Our Journeys: open the full calendar">
-          <video autoplay muted loop playsinline preload="auto" aria-hidden="true">
-            <source src="assets/videos/apricity-animation-60fps.mp4" type="video/mp4">
+        <div class="section-head">
+          <h2>Our Journeys</h2>
+          <p class="section-intro">Twelve months. A world of extraordinary experiences.</p>
+        </div>
+        <a class="journeys-video" href="apricity-calendar.html" aria-label="Open the full calendar">
+          <video data-play-in-view muted loop playsinline preload="none" poster="images/calendar-wheel-poster.jpg" aria-hidden="true">
+            <source src="assets/videos/apricity-calendar-wheel.mp4" type="video/mp4">
           </video>
         </a>
         <div class="journey-grid">
           <a class="journey-card" href="apricity-art-fashion.html">
-            <div class="card-image"><img src="images/journey-art-fashion.jpg" alt="Art and fashion gallery interior"></div>
+            <div class="card-image"><img src="images/journey-art-fashion-800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Art and fashion gallery interior"></div>
             <div class="card-meta"><h3>Art &amp; Fashion</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Front rows, private previews and the people behind the collections.</p>
           </a>
           <a class="journey-card" href="apricity-music.html">
-            <div class="card-image"><img src="images/journey-music-new.jpeg" alt="Orchestra seen from behind the strings"></div>
+            <div class="card-image"><img src="images/journey-music-800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Orchestra seen from behind the strings"></div>
             <div class="card-meta"><h3>Music</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Opera, festivals and performances arranged from the inside.</p>
           </a>
           <a class="journey-card" href="apricity-sport.html">
-            <div class="card-image"><img src="images/journey-sport-new.jpeg" alt="Golf clubs and balls on green turf"></div>
+            <div class="card-image"><img src="images/journey-sport-800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Golf clubs and balls on green turf"></div>
             <div class="card-meta"><h3>Sport</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">The Paddock Club, Centre Court, the Clásico and the final.</p>
           </a>
           <a class="journey-card" href="apricity-cinema.html">
-            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-image"><img src="images/journey-cinema.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Warm lights glowing out of focus in the dark"></div>
             <div class="card-meta"><h3>Cinema</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Red carpets in Cannes and Venice, and the awards season after-parties.</p>
           </a>
           <a class="journey-card" href="apricity-lifestyle.html">
-            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-image"><img src="images/journey-lifestyle.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Champagne tower of crystal coupes"></div>
             <div class="card-meta"><h3>Lifestyle</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Monaco balls, Venice carnival and New Year on a yacht.</p>
           </a>
           <a class="journey-card" href="apricity-exclusive.html">
-            <div class="card-image card-image-placeholder">Photo to come</div>
+            <div class="card-image"><img src="images/journey-exclusive.jpg" width="800" height="800" loading="lazy" decoding="async" alt="Private dinner table set against long curtains"></div>
             <div class="card-meta"><h3>Exclusive</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Private dinners, galas and rooms that do not take bookings.</p>
           </a>
           <a class="journey-card" href="apricity-spiritual.html">
-            <div class="card-image"><img src="images/journey-spiritual.jpg" alt="A quiet view towards the sea"></div>
+            <div class="card-image"><img src="images/journey-spiritual-800.jpg" width="800" height="800" loading="lazy" decoding="async" alt="A quiet view towards the sea"></div>
             <div class="card-meta"><h3>Spiritual</h3><span class="arrow" aria-hidden="true">&rarr;</span></div>
             <p class="card-text">Retreats, ceremonies and distance from everything.</p>
           </a>
@@ -197,14 +236,15 @@
     <section class="card-section" aria-labelledby="card-title">
       <div class="shell card-section-inner">
         <div class="card-section-media">
-          <video class="card-section-video" autoplay muted loop playsinline preload="auto" aria-label="Apricity card animation">
-            <source src="images/APRICITY-3D-White.mp4" type="video/mp4">
+          <video class="card-section-video" data-play-in-view muted loop playsinline preload="none" poster="images/card-poster.jpg" aria-label="Apricity card animation">
+            <source src="assets/videos/apricity-card.mp4" type="video/mp4">
             Apricity card animation
           </video>
         </div>
         <div class="card-section-copy">
           <h2 id="card-title">One card, everywhere.</h2>
           <p>Pay any bill with the Apricity card and top it up with cryptocurrency, wherever you are.</p>
+          <a class="footer-button" href="mailto:hello@apricity.ooo?subject=Apricity%20card">Ask about the card</a>
         </div>
       </div>
     </section>
@@ -214,6 +254,7 @@
         <div>
           <h2 class="contact-title" id="contact-title">Contact</h2>
           <p class="contact-copy">Connect with Apricity to embark on a journey of unparalleled luxury and exclusive experiences. Reach out to us and let us craft your next unforgettable adventure.</p>
+          <a class="footer-button" href="mailto:hello@apricity.ooo?subject=Apricity%20enquiry">Send an enquiry</a>
         </div>
         <div class="contact-details">
           <div class="contact-detail"><span>Email</span><a href="mailto:hello@apricity.ooo">hello@apricity.ooo</a></div>
@@ -232,12 +273,12 @@
           <a class="instagram-link" href="https://www.instagram.com/apricity.ooo/">Visit Instagram profile &rarr;</a>
         </div>
         <div class="instagram-grid">
-          <a href="https://www.instagram.com/p/C_gFyBQNS09/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18000024845652759/full.webp" alt="Apricity on Instagram"></a>
-          <a href="https://www.instagram.com/reel/C8u7zvzNlow/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18026096708005314/full.webp" alt="Apricity on Instagram"></a>
-          <a href="https://www.instagram.com/p/C8Y8mOMIDiC/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18002208701625823/full.webp" alt="Apricity on Instagram"></a>
-          <a href="https://www.instagram.com/p/C8XjWGXNNfn/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18239551888266384/full.webp" alt="Apricity on Instagram"></a>
-          <a href="https://www.instagram.com/p/C8RxhWNNz7Y/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18036816808936185/full.webp" alt="Apricity on Instagram"></a>
-          <a href="https://www.instagram.com/p/C8RwfL2thGN/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18020785955201035/full.webp" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/p/C_gFyBQNS09/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18000024845652759/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/reel/C8u7zvzNlow/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18026096708005314/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/p/C8Y8mOMIDiC/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18002208701625823/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/p/C8XjWGXNNfn/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18239551888266384/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/p/C8RxhWNNz7Y/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18036816808936185/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
+          <a href="https://www.instagram.com/p/C8RwfL2thGN/"><img src="https://cdn.behold.pictures/pYnbEW6l3JPVaeAyYJNI4YamVZ53/1nhh6Vn8wOowcPfvyVFX/18020785955201035/full.webp" loading="lazy" decoding="async" alt="Apricity on Instagram"></a>
         </div>
       </div>
     </section>
@@ -254,7 +295,7 @@
         <div>
           <p class="footer-title">Apricity</p>
           <nav class="footer-links" aria-label="Apricity links">
-            <a href="#about">About</a>
+            <a href="#about-us">About</a>
             <a href="#journeys">Our Journeys</a>
             <a href="apricity-calendar.html">Calendar</a>
             <a href="mailto:hello@apricity.ooo?subject=Apricity enquiry">Contact</a>
@@ -269,7 +310,7 @@
           </nav>
         </div>
         <div class="footer-logo">
-          <img src="https://apricity.ooo/wp-content/uploads/2024/02/Apricity-Logo.png" alt="Apricity">
+          <img src="images/apricity-logo.png" width="856" height="236" loading="lazy" alt="Apricity">
         </div>
       </div>
     </div>
@@ -293,7 +334,21 @@
       document.querySelector('.cookie-dialog').hidden = true;
     });
     // card animation plays faster, roughly matching the hero video's pace
-    document.querySelector('.card-section-video').playbackRate = 1.5;
+    var cardVideo = document.querySelector('.card-section-video');
+    cardVideo.defaultPlaybackRate = 1.5;
+    cardVideo.playbackRate = 1.5;
+    // videos below the first screen load only when they come into view, and stay on the poster for reduced motion
+    var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reducedMotion) document.querySelector('.hero-bg').pause();
+    else {
+      var videoObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) entry.target.play();
+          else entry.target.pause();
+        });
+      }, { rootMargin: '200px 0px' });
+      document.querySelectorAll('[data-play-in-view]').forEach(function (video) { videoObserver.observe(video); });
+    }
   </script>
 </body>
 </html>
