@@ -3,29 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Art &amp; Fashion Journeys — Apricity</title>
-<meta name="description" content="Front rows at fashion week, private art fair previews and the people behind the collections. Art and fashion journeys arranged by Apricity.">
+<title>Sport Journeys — Apricity</title>
+<meta name="description" content="The Paddock Club, Centre Court, the Clásico and the final. VIP sport experiences and travel arranged by Apricity.">
 <!-- staging copy: remove this line and add a canonical link when the site goes live on apricity.ooo -->
 <meta name="robots" content="noindex, nofollow">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Apricity">
-<meta property="og:title" content="Art &amp; Fashion Journeys — Apricity">
-<meta property="og:description" content="Front rows at fashion week, private art fair previews and the people behind the collections. Art and fashion journeys arranged by Apricity.">
-<meta property="og:url" content="https://88lokoloko88-gif.github.io/apricity-website/files/apricity-our-journeys/apricity-art-fashion.html">
-<meta property="og:image" content="https://88lokoloko88-gif.github.io/apricity-website/files/apricity-our-journeys/images/journey-art-fashion-800.jpg">
+<meta property="og:title" content="Sport Journeys — Apricity">
+<meta property="og:description" content="The Paddock Club, Centre Court, the Clásico and the final. VIP sport experiences and travel arranged by Apricity.">
+<meta property="og:url" content="https://88lokoloko88-gif.github.io/apricity-website/apricity-sport.html">
+<meta property="og:image" content="https://88lokoloko88-gif.github.io/apricity-website/images/journey-sport-800.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!--
   ============================================================
-  LEVEL 2 — EVENT CATALOGUE FOR ART & FASHION
+  LEVEL 2 — EVENT CATALOGUE FOR SPORT
   ============================================================
-  Chain: Our Journeys > Art & Fashion (this page) > event.
-
-  The catalogue grid is 2 columns. Deliberate choice:
-  events get a large image, a single event does not look
-  orphaned in an empty row, and 2, 4 or 6 events fill rows evenly.
-
-  The whole event card is clickable, as with the direction cards.
+  Events come from calendar-data.js (the same data as
+  apricity-calendar.html) and are rendered by journey-events.js.
+  To add or change an event, edit calendar-data.js only.
 -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -35,7 +31,6 @@
 <style>
   :root{
     --apj-ink:       #777681;
-    --apj-blue:      #00289B;   /* Apricity brand blue — taken from the PDF offers */
     --apj-surface:   #F9F9F9;
     --apj-hairline:  rgba(119,118,129,.18);
     --apj-container: 1300px;
@@ -64,7 +59,6 @@
 
   /* ---------- direction header ---------- */
   .apj-head{max-width:840px;margin-bottom:80px;}
-  .apj-back,.apj-head,.apj-eyebrow{color:#20242c;}
   .apj-head h1{font-weight:500;font-size:54px;line-height:68px;letter-spacing:.8px;margin-bottom:20px;}
   .apj-head p{max-width:640px;}
 
@@ -152,81 +146,37 @@
 </style>
 
 <style>
-  /* ---------- catalogue grid ---------- */
-  .apj-media{position:relative;}
-  .apj-ph{
-    position:absolute;inset:0;display:flex;flex-direction:column;
-    align-items:center;justify-content:center;gap:6px;text-align:center;padding:20px;
-    border:1px solid var(--apj-hairline);
+  /* empty state — no events yet */
+  .apj-empty{
+    padding:0 var(--apj-gutter);
+    max-width:640px;
   }
-  .apj-ph span{font-size:13px;line-height:20px;letter-spacing:.4px;opacity:.7;}
-  .apj-ph code{font-size:11px;line-height:18px;opacity:.5;word-break:break-all;}
-
-  .apj-catalog{display:grid;grid-template-columns:repeat(2,1fr);gap:0;}
-  .apj-catalog > div{padding:0 var(--apj-gutter);margin-bottom:70px;}
-
-  .apj-card{display:block;text-decoration:none;color:inherit;transition:var(--apj-ease);}
-  .apj-card .apj-media{margin-bottom:28px;}
-  .apj-card:hover .apj-media img{opacity:.72;}
-  .apj-card h3{font-weight:500;font-size:26px;line-height:40px;letter-spacing:.8px;margin-bottom:4px;color:var(--apj-blue);}
-  .apj-card .apj-place{font-weight:500;margin-bottom:12px;}
-  .apj-card p{font-size:16px;line-height:30px;}
+  .apj-empty p{margin-bottom:6px;}
 
   @media (max-width:767px){
-    .apj-catalog{grid-template-columns:1fr;}
-    .apj-catalog > div{padding:0;margin-bottom:55px;}
-    .apj-card h3{font-size:22px;line-height:34px;}
+    .apj-empty{padding:0;}
   }
 </style>
 <link rel="stylesheet" href="journey-events.css">
 </head>
 <body>
 
-<section class="apj" id="art-fashion">
+<section class="apj" id="sport">
   <div class="apj-container">
     <div class="apj-row">
 
-      <a class="apj-back" href="index.html#journeys">← Apricity</a>
+      <a class="apj-back" href="index.html">← Apricity</a>
 
       <div class="apj-head">
-        <h1>Art &amp; Fashion</h1>
-        <p>The season, seen from the inside. Front rows, private previews before the doors open, and the people behind the collections.</p>
+        <h1>Sport</h1>
+        <p>The Paddock Club, Centre Court, the Clásico, the final. Arrive without queues, watch from where the sport is actually understood.</p>
       </div>
 
       <p class="apj-eyebrow">Upcoming</p>
 
-      <div class="apj-catalog">
-
-        <!-- EVENT 1 -->
-        <div>
-          <a class="apj-card" href="apricity-event-paris-fashion-week.html">
-            <div class="apj-media">
-              <img src="images/event-paris-fashion-week.jpg" alt="Paris Fashion Week">
-            </div>
-            <h3>Paris Fashion Week</h3>
-            <p class="apj-place">Paris · 28 September — 6 October 2026</p>
-            <p>Eighteen houses to choose from, fittings and stylists arranged, and the week built end to end around what you want to see.</p>
-          </a>
-        </div>
-
-        <!-- EVENT 2 -->
-        <div>
-          <a class="apj-card" href="apricity-event-art-basel-paris.html">
-            <div class="apj-media">
-              <img src="images/event-art-basel-paris.jpg" alt="Art Basel Paris">
-            </div>
-            <h3>Art Basel Paris</h3>
-            <p class="apj-place">Paris &amp; Normandy · October 2026 · six days</p>
-            <p>From the Salon des Refusés to Art Basel: dealers, private rooms and Normandy, over six days.</p>
-          </a>
-        </div>
-
-      </div>
-
-      <p class="apj-eyebrow">Full season</p>
-      <div data-journey-events="art fashion"></div>
-      <a class="apj-calendar-link" href="apricity-calendar.html?genre=art,fashion">See the full calendar &rarr;</a>
-      <p class="apj-cta"><a class="apj-btn" href="mailto:hello@apricity.ooo?subject=Art%20%26%20Fashion%20journeys">Plan your journey</a></p>
+      <div data-journey-events="sport"></div>
+      <a class="apj-calendar-link" href="apricity-calendar.html?genre=sport">See the full calendar &rarr;</a>
+      <p class="apj-cta"><a class="apj-btn" href="mailto:hello@apricity.ooo?subject=Sport%20journeys">Plan your journey</a></p>
 
     </div>
   </div>
@@ -234,6 +184,5 @@
 
 <script src="calendar-data.js"></script>
 <script src="journey-events.js"></script>
-
 </body>
 </html>
