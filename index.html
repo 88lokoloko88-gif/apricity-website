@@ -85,7 +85,9 @@
     .card-section-media { display: block; width: min(100%, 560px); aspect-ratio: 260 / 146; border-radius: 12px; background: #fff; overflow: hidden; }
     .card-section-video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
     .card-section-copy h2 { margin-bottom: 16px; font-size: clamp(32px, 4.4vw, 48px); letter-spacing: -2px; animation: card-title-reveal .8s cubic-bezier(.19,1,.22,1) both; }
-    .card-section-copy .footer-button { margin-top: 28px; }
+    .card-actions { display: flex; flex-wrap: wrap; gap: 16px 20px; align-items: center; justify-content: center; margin-top: 28px; }
+    .wallet-button { display: inline-flex; align-items: center; justify-content: center; min-width: 210px; padding: 17px 28px; border-radius: 10px; background: var(--blue); color: var(--white); text-decoration: none; font: 500 17px/1 'Manrope', sans-serif; transition: opacity var(--ease); }
+    .wallet-button:hover { opacity: .75; }
     .card-section-copy p { max-width: 520px; margin: 0 auto; color: var(--muted); font-size: 18px; line-height: 1.55; animation: card-copy-reveal .8s .14s cubic-bezier(.19,1,.22,1) both; }
     @keyframes card-title-reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes card-copy-reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -243,7 +245,10 @@
         <div class="card-section-copy">
           <h2 id="card-title">One card, everywhere.</h2>
           <p>Pay any bill with the Apricity card and top it up with cryptocurrency, wherever you are.</p>
-          <a class="footer-button" href="mailto:hello@apricity.ooo?subject=Apricity%20card">Ask about the card</a>
+          <div class="card-actions">
+            <a class="wallet-button" href="https://t.me/ApricityWalletBot" target="_blank" rel="noopener">Try our wallet</a>
+            <a class="footer-button" href="mailto:hello@apricity.ooo?subject=Apricity%20card">Ask about the card</a>
+          </div>
         </div>
       </div>
     </section>
