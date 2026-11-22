@@ -30,7 +30,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Bodoni+Moda:ital,wght@0,500;0,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -80,8 +80,6 @@
   .apj-hero .apj-head{position:relative;z-index:1;}
   .apj-hero .apj-back{color:#fff;}
   .apj-hero .apj-eyebrow{color:#9fb1ff;}
-  .apj-hero .apj-head h1{color:#fff;}
-  .apj-hero .apj-head p{color:rgba(255,255,255,.85);}
   .apj-hero .cal-stats b{color:#fff;}
   .apj-hero .cal-stats{color:rgba(255,255,255,.75);}
 
@@ -91,11 +89,8 @@
     text-transform:uppercase;color:var(--apj-blue);margin-bottom:14px;
   }
   .apj-head{max-width:840px;margin-bottom:0;}
-  .apj-head h1{
-    font-family:'Bodoni Moda',Georgia,serif;font-weight:600;
-    font-size:54px;line-height:68px;letter-spacing:.8px;margin-bottom:20px;
-  }
-  .apj-head p{max-width:680px;}
+  .apj-title{display:block;margin:0 0 20px;}
+  .apj-title img{display:block;width:min(100%,560px);height:auto;}
   .cal-stats{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;font-size:13px;line-height:22px;letter-spacing:1px;text-transform:uppercase;}
   .cal-stats b{font-weight:500;font-size:20px;letter-spacing:0;color:#20242c;margin-right:6px;}
 
@@ -162,14 +157,14 @@
   /* ---------- tablet ---------- */
   @media (max-width:1024px){
     .apj{padding:100px 0 80px;}
-    .apj-head h1{font-size:42px;line-height:54px;}
+    .apj-title img{width:min(100%,460px);}
   }
 
   /* ---------- mobile (xs variant) ---------- */
   @media (max-width:767px){
     .apj{padding:80px 0 60px;}
     .apj-container{padding:0 20px;}
-    .apj-head h1{font-size:34px;line-height:46px;}
+    .apj-title img{width:min(100%,340px);}
     .cal-label{min-width:100%;}
     .apj-hero{padding:32px 22px 28px;border-radius:14px;}
   }
@@ -186,8 +181,7 @@
 
         <div class="apj-head">
           <p class="apj-eyebrow">Apricity · Impossible Access</p>
-          <h1>Experience Catalogue <span style="white-space:nowrap">2026–27</span></h1>
-          <p><b>Hot</b> is the signature list: the events Apricity leads with. <b>Core</b> is the main season. <b>Also available</b> is everything else we can arrange on request. <b>Upcoming</b> shows live offers with prices; past events stay on record without pricing.</p>
+          <h1 class="apj-title"><img src="images/calendar-title.png" alt="Experience Catalogue 2026–27" width="1086" height="262"></h1>
           <div class="cal-stats" id="stats"></div>
         </div>
       </div>
