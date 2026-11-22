@@ -69,30 +69,31 @@
   /* ---------- hero (photo backdrop behind the header) ---------- */
   .apj-hero{
     position:relative;border-radius:18px;overflow:hidden;
-    padding:48px 44px 40px;margin-bottom:34px;isolation:isolate;
+    padding:40px 44px 28px;margin-bottom:34px;isolation:isolate;
+    aspect-ratio:1034/580;display:flex;flex-direction:column;
     background:#0b1340 url('images/calendar-hero.jpg') center/cover no-repeat;
   }
   .apj-hero::before{
     content:"";position:absolute;inset:0;z-index:0;
-    background:linear-gradient(180deg, rgba(5,10,40,.72) 0%, rgba(5,10,40,.55) 45%, rgba(5,10,40,.78) 100%);
+    background:linear-gradient(180deg, rgba(5,10,40,.55) 0%, rgba(5,10,40,.08) 35%, rgba(5,10,40,.1) 65%, rgba(5,10,40,.65) 100%);
   }
   .apj-hero .apj-back,
   .apj-hero .apj-head{position:relative;z-index:1;}
   .apj-hero .apj-back{color:#fff;}
-  .apj-hero .apj-eyebrow{color:#9fb1ff;}
+  .apj-hero .apj-head{display:flex;flex-direction:column;flex:1;}
   .apj-hero .cal-stats b{color:#fff;}
   .apj-hero .cal-stats{color:rgba(255,255,255,.75);}
 
   /* ---------- header ---------- */
-  .apj-eyebrow{
-    font-weight:500;font-size:14px;line-height:22px;letter-spacing:1.6px;
-    text-transform:uppercase;color:var(--apj-blue);margin-bottom:14px;
-  }
   .apj-head{max-width:840px;margin-bottom:0;}
-  .apj-title{display:block;margin:0 0 20px;}
+  .apj-title{display:block;margin:4px 0 0;}
   .apj-title img{display:block;width:min(100%,560px);height:auto;}
-  .cal-stats{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;font-size:13px;line-height:22px;letter-spacing:1px;text-transform:uppercase;}
-  .cal-stats b{font-weight:500;font-size:20px;letter-spacing:0;color:#20242c;margin-right:6px;}
+  .cal-stats{
+    display:grid;grid-template-columns:repeat(3,auto);column-gap:26px;row-gap:8px;
+    margin-top:auto;padding-top:20px;font-size:11px;line-height:18px;letter-spacing:.8px;text-transform:uppercase;
+    justify-content:start;
+  }
+  .cal-stats b{font-weight:500;font-size:16px;letter-spacing:0;color:#20242c;margin-right:5px;}
 
   /* ---------- filters ---------- */
   .cal-toolbar{display:grid;gap:12px;padding:26px 0;border-top:1px solid var(--apj-hairline);border-bottom:1px solid var(--apj-hairline);margin-bottom:30px;}
@@ -164,9 +165,11 @@
   @media (max-width:767px){
     .apj{padding:80px 0 60px;}
     .apj-container{padding:0 20px;}
-    .apj-title img{width:min(100%,340px);}
+    .apj-title img{width:min(100%,220px);}
     .cal-label{min-width:100%;}
-    .apj-hero{padding:32px 22px 28px;border-radius:14px;}
+    .apj-hero{padding:22px 18px 16px;border-radius:14px;aspect-ratio:auto;min-height:560px;}
+    .cal-stats{grid-template-columns:repeat(3,auto);column-gap:10px;row-gap:5px;font-size:9px;padding-top:10px;}
+    .cal-stats b{font-size:13px;margin-right:3px;}
   }
 </style>
 </head>
@@ -180,8 +183,7 @@
         <a class="apj-back" href="index.html#journeys">← Apricity</a>
 
         <div class="apj-head">
-          <p class="apj-eyebrow">Apricity · Impossible Access</p>
-          <h1 class="apj-title"><img src="images/calendar-title.png" alt="Experience Catalogue 2026–27" width="1086" height="262"></h1>
+          <h1 class="apj-title"><img src="images/calendar-title.png" alt="Apricity · Impossible Access — Experience Catalogue 2026–27" width="1086" height="262"></h1>
           <div class="cal-stats" id="stats"></div>
         </div>
       </div>
